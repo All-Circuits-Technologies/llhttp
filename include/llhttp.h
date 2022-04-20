@@ -9,6 +9,10 @@
 # define LLHTTP_STRICT_MODE 0
 #endif
 
+#ifndef UNUSED
+#   define UNUSED(x) ((void)(x))
+#endif
+
 #ifndef INCLUDE_LLHTTP_ITSELF_H_
 #define INCLUDE_LLHTTP_ITSELF_H_
 #ifdef __cplusplus
@@ -320,7 +324,8 @@ extern "C" {
 typedef llhttp__internal_t llhttp_t;
 typedef struct llhttp_settings_s llhttp_settings_t;
 
-typedef int (*llhttp_data_cb)(llhttp_t*, const char *at, size_t length);
+typedef int (*llhttp_data_cb)(llhttp_t*, const unsigned char *at,
+                              size_t length);
 typedef int (*llhttp_cb)(llhttp_t*);
 
 struct llhttp_settings_s {
